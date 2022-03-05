@@ -45,8 +45,8 @@ def attractions():
                 data["address"] = attractions[i][4]
                 data["transport"] = attractions[i][5]
                 data["mrt"] = attractions[i][6]
-                data["latitude"] = attractions[i][8]
-                data["longitude"] = attractions[i][9]
+                data["latitude"] = attractions[i][7]
+                data["longitude"] = attractions[i][8]
 
                 sql = "SELECT imageUrl FROM taipeiAttractionsImages WHERE imageId = %s"
                 val = (str(attractions[i][0]),)
@@ -104,8 +104,8 @@ def attraction(id):
             result["address"] = attractions[4]
             result["transport"] = attractions[5]
             result["mrt"] = attractions[6]
-            result["latitude"] = attractions[8]
-            result["longitude"] = attractions[9]
+            result["latitude"] = attractions[7]
+            result["longitude"] = attractions[8]
 
             sql = "SELECT imageUrl FROM taipeiAttractionsImages WHERE imageId = %s"
             val = (str(id), )
@@ -142,7 +142,7 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(port=3000)
+app.run(host="0.0.0.0", port=3000)
 
 mycursor.close()
 mydb.close()
