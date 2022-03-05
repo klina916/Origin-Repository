@@ -36,3 +36,4 @@ mydb.commit()
 
 mycursor.close()
 mydb.close()
+
