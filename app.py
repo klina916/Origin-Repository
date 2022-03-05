@@ -27,7 +27,7 @@ def attractions():
     pageNum = int(pageNum)
     keyword = request.args.get("keyword", "")
     
-    sql = "SELECT * FROM `taipeiAttractions` WHERE `name` LIKE %s ORDER BY `id` LIMIT %s, %s"
+    sql = "SELECT id, name, category, description, address, transport, mrt, latitude, longitude FROM `taipeiAttractions` WHERE `name` LIKE %s ORDER BY `id` LIMIT %s, %s"
     val = (("%"+keyword+"%"), (pageNum * 12), 12)
     mycursor.execute(sql, val)
 
@@ -89,7 +89,7 @@ def attractions():
 
 @app.route("/api/attraction/<id>", methods=["GET"])
 def attraction(id):
-    sql = "SELECT * FROM `taipeiAttractions` WHERE `id` = %s"
+    sql = "SELECT id, name, category, description, address, transport, mrt, latitude, longitude FROM `taipeiAttractions` WHERE `id` = %s"
     val = (str(id), )
     mycursor.execute(sql, val)
     attractions = mycursor.fetchone()
